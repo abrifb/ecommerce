@@ -4,3 +4,5 @@ document.getElementById("btnTop").addEventListener("click", function () {
         behavior: "smooth"
     });
 }); 
+
+$('.carousel').carousel()

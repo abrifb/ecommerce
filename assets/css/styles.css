@@ -32,38 +32,16 @@
     background: #0056b3;
 }
 
-/* Contenedor principal */
-.carousel {
-  width: 90%;
-  max-width: 600px;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  position: relative;
+.carousel-inner{
+    height: 280px;
 }
 
-/* Contenedor de imágenes */
-.slides {
-  display: flex;
-  width: 300%;
-  animation: slide 12s infinite;
+
+.card {
+    transition: transform 0.3s ease; /* Animación carta */
 }
 
-.slides img {
-  width: 100%;
-  object-fit: cover;
+.card:hover {
+    transform: scale(1.05); /* Aumenta el tamaño */
 }
 
-/* Animación */
-@keyframes slide {
-  0%   { transform: translateX(0%); }
-  30%  { transform: translateX(0%); }
-
-  33%  { transform: translateX(-100%); }
-  63%  { transform: translateX(-100%); }
-
-  66%  { transform: translateX(-200%); }
-  96%  { transform: translateX(-200%); }
-
-  100% { transform: translateX(0%); }
-}

@@ -7,18 +7,20 @@ Interfaz web de una tienda e-commerce con navegación, listado de productos, det
 - HTML5, CSS3 (bootstrap), JavaScript (vanilla)
 
 ## Ejecutar el proyecto
-- Opción 1: abrir `index.html` en el navegador.
+- http://127.0.0.1:5500/ecommerce-frontend/
 - https://abrifb.github.io/ecommerce/
 
 ## Funcionalidades
-- Navbar para navegar por la página
-- Listado de productos en tarjetas con botón de compra
-- Página de detalle de producto
+- pagina de inicio con navbar y carrito de compras
+- Listado de productos
+- Página de detalle de producto con boton de compra y seleccionador de tallas
 - Footer con información de la tienda
 
 ## Capturas
-![Home](assets/img/captura-home.png)
-![Detalle](assets/img/captura-detalle.png)
+./asse
+![Home](assets/img/readme/captura-index.jpg)
+![Listado Producto](assets/img/readme/captura-listado.jpg)
+![Detalle y Botón de compra](assets/img/readme/captuta-producto.jpg)
 
 ## Autor
-Tu nombre — enlace a tu perfil de GitHub
+Abraham Fuentes— https://github.com/abrifb/ecommerce

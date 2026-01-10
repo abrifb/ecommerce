@@ -117,12 +117,17 @@ function actualizarAuthUI() {
 // =======================
 function agregarProducto(idProducto) {
   const prod = catalogo.find(p => p.id === idProducto);
+
   if (prod) {
     carrito.push({ ...prod });
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert("Producto agregado al carrito");
+
+    alert(`${prod.nombre} agregado al carrito`);
+    
+    renderizarCarrito();
   }
 }
+
 
 function quitarProducto(idProducto) {
   const index = carrito.findIndex(p => p.id === idProducto);
@@ -135,8 +140,11 @@ function quitarProducto(idProducto) {
 
 function aplicarDescuento(codigo) {
   if (codigo === "DESC15") {
+    carrito.forEach(p => p.descuentoAplicado = true);
     return 0.85;
   }
+
+  carrito.forEach(p => p.descuentoAplicado = false);
   return 1;
 }
 
@@ -187,10 +195,14 @@ function renderizarProductos() {
 
     col.innerHTML = `
       <div class="card h-100">
-        <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
-        <div class="card-body text-center">
-          <p class="small text-uppercase">${prod.nombre}</p>
-          <p class="fw-bold">${formatoCLP.format(prod.precio)}</p>
+        <a href="producto.html?id=${prod.id}" class="text-decoration-none text-dark">
+          <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
+          <div class="card-body text-center">
+            <p class="small text-uppercase">${prod.nombre}</p>
+            <p class="fw-bold">${formatoCLP.format(prod.precio)}</p>
+          </div>
+        </a>
+        <div class="card-footer bg-white border-0 text-center">
           <button class="btn btn-outline-dark btn-sm"
                   onclick="agregarProducto(${prod.id})">
             Agregar
@@ -204,8 +216,34 @@ function renderizarProductos() {
 }
 
 
+function aplicarCodigo() {
+  renderizarCarrito();
+}
+
+function cargarProductoDetalle() {
+  const params = new URLSearchParams(window.location.search);
+  const idProducto = Number(params.get("id"));
+
+  if (!idProducto) return;
+
+  const producto = catalogo.find(p => p.id === idProducto);
+  if (!producto) return;
+
+  document.getElementById("imgProducto").src = producto.imagen;
+  document.getElementById("imgProducto").alt = producto.nombre;
+  document.getElementById("nombreProducto").textContent = producto.nombre;
+  document.getElementById("precioProducto").textContent =
+    formatoCLP.format(producto.precio);
+
+  document
+    .getElementById("btnAgregarProducto")
+    .addEventListener("click", () => agregarProducto(producto.id));
+}
+
+
 // =======================
 document.addEventListener("DOMContentLoaded", () => {
   renderizarProductos();
   renderizarCarrito();
+  cargarProductoDetalle();
 });

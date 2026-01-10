@@ -38,6 +38,15 @@
         <button class="btn btn-primary d-flex align-items-center gap-2 px-3 py-2 ms-auto me-3">
                 <i class="bi bi-cart"></i>
         </button>
+        <div id="authArea" class="me-2">
+        <button 
+            class="btn btn-outline-dark"
+            onclick="mostrarModal('login')"
+            aria-label="Iniciar sesión"
+            title="Iniciar sesión">
+            <i class="bi bi-person-circle"></i>
+        </button>
+        </div>
         </nav>
     </header>
     
@@ -69,84 +78,12 @@
 
 
     <div class="container my-5">
-    <div class="row text-center g-4">
-
-        
-
-        
-        <div class="col-6 col-md-3 p-2">
-        <a href="producto.html" class="product-card text-decoration-none text-dark d-block">
-            <img src="./assets/img/productos/chaqueta1-listadoproductos.jpg" class="img-fluid mb-3" alt="Chaqueta Bomber Azul">
-            <p class="mb-1 text-uppercase small">CHAQUETA BOMBER AZUL</p>
-            <p class="fw-bold">$39.990</p>
-        </a>
-        </div>
-    
-
-        
-       <div class="col-6 col-md-3 p-2">
-        <a href="producto.html" class="product-card text-decoration-none text-dark d-block">
-            <img src="./assets/img/productos/chaqueta2-listadoproductos.jpg" class="img-fluid mb-3" alt="Chaqueta Cuero Cuello Alto">
-            <p class="mb-1 text-uppercase small">CHAQUETA CUERO CUELLO ALTO</p>
-            <p class="fw-bold">$59.990</p>
-        </a>
-        </div>
-
-        <div class="col-6 col-md-3 p-2">
-        <a href="producto.html" class="product-card text-decoration-none text-dark d-block">
-            <img src="./assets/img/productos/pantalon-listadoproductos.jpg" class="img-fluid mb-3" alt="Pantalón corte ancho gris">
-            <p class="mb-1 text-uppercase small">PANTALÓN CORTE ANCHO GRIS</p>
-            <p class="fw-bold">$49.990</p>
-        </a>
-        </div>
-
-        <div class="col-6 col-md-3 p-2">
-        <a href="producto.html" class="product-card text-decoration-none text-dark d-block">
-            <img src="./assets/img/productos/polera-listadoproductos.jpg" class="img-fluid mb-3" alt="Polera estampado moto">
-            <p class="mb-1 text-uppercase small">POLERA ESTAMPADO MOTO</p>
-            <p class="fw-bold">$19.990</p>
-        </a>
-        </div>
-
-        <div class="col-6 col-md-3 p-2">
-        <a href="producto.html" class="product-card text-decoration-none text-dark d-block">
-            <img src="./assets/img/productos/sudadera-listadoproductos.jpg" class="img-fluid mb-3" alt="Chaqueta blanca con rayas">
-            <p class="mb-1 text-uppercase small">CHAQUETA BLANCA CON RAYAS</p>
-            <p class="fw-bold">$39.990</p>
-        </a>
-        </div>
-
-        <div class="col-6 col-md-3 p-2">
-        <a href="producto.html" class="product-card text-decoration-none text-dark d-block">
-            <img src="./assets/img/productos/zapatilla1-listadoproductos.jpg" class="img-fluid mb-3" alt="Zapatillas gamuza beige">
-            <p class="mb-1 text-uppercase small">ZAPATILLAS GAMUSA BEIGE</p>
-            <p class="fw-bold">$39.990</p>
-        </a>
-        </div>
-
-        <div class="col-6 col-md-3 p-2">
-        <a href="producto.html" class="product-card text-decoration-none text-dark d-block">
-            <img src="./assets/img/productos/zapatilla2-listadoproductos.jpg" class="img-fluid mb-3" alt="Zapatillas cuero negro">
-            <p class="mb-1 text-uppercase small">ZAPATILLAS CUERO NEGRO</p>
-            <p class="fw-bold">$29.990</p>
-        </a>
-        </div>
-
-        <div class="col-6 col-md-3 p-2">
-        <a href="producto.html" class="product-card text-decoration-none text-dark d-block">
-            <img src="./assets/img/productos/bolso-listadoproductos.jpg" class="img-fluid mb-3" alt="Bolso de cuero hombro">
-            <p class="mb-1 text-uppercase small">BOLSO DE CUERO HOMBRO</p>
-            <p class="fw-bold">$69.990</p>
-        </a>
-        </div>
+    <div class="row text-center g-4" id="listadoProductos">
+    <!-- JS renderiza aquí -->
+     </div>
 
 
     </div>
-</div>
-
-
-
-
 
     </main>
     <footer class="bg-black text-white py-5">
@@ -194,6 +131,44 @@
         </div>
     </div>
     </footer>
+
+    <!-- MODAL LOGIN -->
+    <div class="modal fade" id="modalAuth" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <div class="modal-header">
+            <h5 class="modal-title">Iniciar sesión</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+            <div class="mb-3">
+            <label class="form-label">Usuario</label>
+            <input type="text" id="inputUsuario" class="form-control">
+            </div>
+
+            <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            <input type="password" id="inputPassword" class="form-control">
+            </div>
+
+            <div id="mensajeAuth" class="text-danger small"></div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+            Cancelar
+            </button>
+            <button class="btn btn-dark" onclick="handleLogin()">
+            Ingresar
+            </button>
+        </div>
+
+        </div>
+    </div>
+</div>
+
 
     <script src="./assets/js/app.js"></script>
 </body>
